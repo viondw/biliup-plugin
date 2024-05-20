@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>biliup-plugin</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* 让内容占满屏幕高度 */
+    }
+
+    .logo-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .logo-img {
+        max-width: 200px;
+    }
+
+    .description {
+        text-align: center;
+        margin-bottom: 20px;
+        line-height: 1.5;
+        font-size: 18px;
+        font-weight: bold;
+        color: #555; /* 改变描述文字颜色 */
+        padding: 20px; /* 增加内边距 */
+        background-color: #fff; /* 添加背景色 */
+        border-radius: 10px; /* 圆角边框 */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 32px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        margin-top: auto; /* 将页脚置于页面底部 */
+    }
+</style>
+</head>
+<body>
+
+<div class="logo-container">
+    <img src="https://img2.imgtp.com/2024/05/20/1HPPfmwS.png" alt="Logo" class="logo-img">
+</div>
+
+<h1>biliup-plugin</h1>
+
+<div class="description">
+    <p>该项目所有的插件基于biliup进行拓展编写.</p>
+    <p>适用于preprocessor、segment_processor、downloaded_processor、postprocessor.</p>
+    <p>提交插件请到仓库进行，本页面只作为前端展示，<a href="https://github.com/viondw/biliup-plugin">点我提交</a></p>
+</div>
+
+<div class="resource-card-container" id="folderList"></div>
+
+<footer>
+    <p>&copy; 2024 你的名字或公司名. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
