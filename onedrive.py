@@ -2,7 +2,6 @@ import os
 import re
 import shutil
 import subprocess
-from datetime import datetime
 
 def extract_anchor_name_and_date(file_path):
     # 使用正则表达式匹配文件名中的主播名和日期
@@ -17,6 +16,7 @@ def main():
 
     first_line = True
     target_date = None
+    anchor_name = None
 
     for line in sys.stdin:
         file_path = line.strip()
@@ -36,11 +36,11 @@ def main():
             shutil.move(file_path, target_dir)
             print(f"文件已移动到: {target_dir}")
 
-    if target_date:
-        # 上传到阿里云盘并删除本地文件
-        target_cloud_path = f"/录播/{anchor_name}"
-        print(f"开始上传 {target_dir} 到阿里云盘目录 {target_cloud_path}...")
-        cmd = ['aliyunpan', 'upload', target_dir, target_cloud_path]
+    if target_date and anchor_name:
+        # 使用rclone copy上传到云端并删除本地文件
+        target_cloud_path = f"myod:/录播/{anchor_name}/{target_date}"
+        print(f"开始使用 rclone 上传 {target_dir} 到云端目录 {target_cloud_path}...")
+        cmd = ['rclone', 'copy', target_dir, target_cloud_path]
         subprocess.run(cmd, check=True)
         shutil.rmtree(target_dir)
         print(f"上传完成并已删除本地文件夹：{target_dir}")
