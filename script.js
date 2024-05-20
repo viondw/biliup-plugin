@@ -63,17 +63,14 @@ async function renderFolderList(data) {
             const desc = document.createElement('div');
             desc.classList.add('resource-card-desc');
             
-            try {
-                const descResponse = await fetch(`${item.url}/说明.txt`);
-                if (descResponse.ok) {
-                    const descText = await descResponse.text();
-                    desc.textContent = descText;
-                } else {
-                    desc.textContent = '';
-                }
-            } catch (error) {
-                desc.textContent = '';
-            }
+            
+            const descResponse =  fetch(`${item.url.split('?')[0]}/说明.txt`);
+            
+            descResponse.then((response) => {
+                return response.json()
+            }).then((json) => {
+                desc.textContent = decodeURIComponent(escape(atob(json.content)));
+            })
 
             const footer = document.createElement('div');
             footer.classList.add('resource-card-footer');
