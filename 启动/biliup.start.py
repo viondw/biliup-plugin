@@ -34,8 +34,9 @@ def download_and_run_script(url):
         try:
             subprocess.run(['cmd', '/c', script_name])
         except:
-            print("start.cmd 运行出错，尝试下载并运行 start.bat")
-            download_and_run_script('https://github.com/ikun1993/biliupstart/releases/latest/download/start.bat')
+            print("start.cmd 运行出错，尝试运行 start.bat")
+            if not os.path.exists('start.bat'):
+                download_and_run_script('https://github.com/ikun1993/biliupstart/releases/latest/download/start.bat')
             subprocess.run(['cmd', '/c', 'start.bat'])
     else:
         # 赋予脚本执行权限
