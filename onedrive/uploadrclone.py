@@ -5,7 +5,7 @@ import subprocess
 
 def extract_anchor_name_and_date(file_path):
     # 使用正则表达式匹配文件名中的主播名和日期
-    match = re.search(r"/([^/]+)(\d{4}-\d{2}-\d{2})T\d{2}_\d{2}_\d{2}\.mp4$", file_path)
+    match = re.search(r"/([^/]+)(\d{4}-\d{2}-\d{2})T\d{2}_\d{2}_\d{2}", file_path)
     if match:
         return match.group(1), match.group(2)
     else:
